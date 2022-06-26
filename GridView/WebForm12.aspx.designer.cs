@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GridView2
+namespace GridView
 {
 
 
-    public partial class WebForm4
+    public partial class WebForm12
     {
 
         /// <summary>

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GridView {
+namespace GridView2 {
     
     
     public partial class ViewSwitcher {

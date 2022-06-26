@@ -1,10 +1,10 @@
 ﻿/*using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace GridView
 {
@@ -12,19 +12,25 @@ namespace GridView
     {
         public int DepartmentId { get; set; }
         public string DepartmentName { get; set; }
+        public List<Employee> Employees
+        {
+            get
+            {
+                return EmployeeDataAccessLayer4.GetAllEmployees(this.DepartmentId);
+            }
+        }
     }
 
-    public class DepartmentDataAccessLayer
+    public class DepartmentDataAccessLayer1
     {
-        public static List<Department> GetAllDepartments()
+        public static List<Department> GetAllDepartmentsandEmployees()
         {
             List<Department> listDepartments = new List<Department>();
 
-            string CS = ConfigurationManager.ConnectionStrings["DBConnectionString"].ConnectionString;
+            string CS = ConfigurationManager.ConnectionStrings["SampleConnectionString3"].ConnectionString;
             using (SqlConnection con = new SqlConnection(CS))
             {
-                SqlCommand cmd = new SqlCommand("spGetDepartments", con);
-                cmd.CommandType = CommandType.StoredProcedure;
+                SqlCommand cmd = new SqlCommand("Select * from tblDepartment1", con);
                 con.Open();
                 SqlDataReader rdr = cmd.ExecuteReader();
                 while (rdr.Read())
